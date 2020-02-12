@@ -33,4 +33,6 @@ It can be unified under one `<script>` tag, or defined as a function to your JS 
 
 ---
 
+This repository contains two files: `index.html`, which is a test page that demonstrates how the redirect works, and `redirect.html`, which is a basic template for the redirect script (inculdes a cancel button). Most users will only ever need `redirect.html`, and it can be customized easily. 
+
 You can clone this repository for a ready-to-go redirect page, which can be uploaded to any webroot and modified to your liking. A live version of this page is also available at https://query-test.000webhostapp.com. 
