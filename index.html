@@ -66,22 +66,22 @@
 
     <!-- Optional JavaScript -->
     <script>
-        function queryRedirect() {
-            var siteurl = document.getElementById("siteurl").value;
-            var redirurlunedited = document.getElementById("redirurl").value;
-            if (redirurlunedited.indexOf('http://') !== -1) {
-                var redirurl = redirurlunedited.replace("http://", "");
-            } else if (redirurlunedited.indexOf('https://') !== -1) {
-                var redirurl = redirurlunedited.replace("https://", "");
-            } else {
-                var redirurl = redirurlunedited;
+        function queryRedirect() { // sends user to new page
+            var siteurl = document.getElementById("siteurl").value; // gets value of siteurl input
+            var redirurlunedited = document.getElementById("redirurl").value; // gets value of redirurl input
+            if (redirurlunedited.indexOf('http://') !== -1) { // checks if redirurl includes http://
+                var redirurl = redirurlunedited.replace("http://", ""); // removes http://
+            } else if (redirurlunedited.indexOf('https://') !== -1) { // checks if redirurl includes https://
+                var redirurl = redirurlunedited.replace("https://", ""); // removes https://
+            } else { // if no protocol
+                var redirurl = redirurlunedited; // stays the same
             };
-            if (siteurl.indexOf('http://') !== -1) {
-                window.location.href = siteurl + "?" + redirurlunedited;
-            } else if (siteurl.indexOf('https://') !== -1) {
-                window.location.href = siteurl + "?" + redirurlunedited;
-            } else {
-                window.location.href = "http://" + siteurl + "?" + redirurlunedited;
+            if (siteurl.indexOf('http://') !== -1) { // checks if siteurl includes http://
+                window.location.href = siteurl + "?" + redirurlunedited; // sends user to http:// redirect page
+            } else if (siteurl.indexOf('https://') !== -1) { // checks if siteurl includes https://
+                window.location.href = siteurl + "?" + redirurlunedited; // sends user to https:// redirect page
+            } else { // if no protocol
+                window.location.href = "http://" + siteurl + "?" + redirurlunedited; // sends user to http:// redirect page in case SSL is not supported
             };
         };
     </script>
