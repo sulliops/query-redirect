@@ -1,5 +1,5 @@
 # query-redirect
-A simple Javascript query (?[domain]) redirect script and template. Can be invoked by visiting `https://siteurl.com/redirect.html?[newdomain]`.
+A simple Javascript query (?[domain]) redirect script and template. Can be invoked by visiting `http://siteurl.com/redirect.html?[newdomain]`.
 
 It can be unified under one `<script>` tag, or defined as a function to your JS file. No external JS libraries are needed, and it works in all major browsers. 
 
@@ -33,4 +33,4 @@ It can be unified under one `<script>` tag, or defined as a function to your JS 
 
 ---
 
-You can clone this repository for a ready-to-go redirect page, which can be uploaded to any webroot and modified to your liking. A live version of this page is also available at https://go.sulliops.co. 
+You can clone this repository for a ready-to-go redirect page, which can be uploaded to any webroot and modified to your liking. A live version of this page is also available at https://query-test.000webhostapp.com. 
