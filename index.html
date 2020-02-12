@@ -46,11 +46,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4>URL to redirect.html</h4>
-                    <p>Format: <code>siteurl.com/redirect.html</code>, no HTTP/HTTPS.</p>
+                    <p>Example: <code>siteurl.com/redirect.html</code></p>
                     <input placeholder="siteurl.com/redirect.html" class="form-control" id="siteurl" />
                     <br>
                     <h4>URL you wish to redirect to</h4>
-                    <p>Format: <code>google.com</code>, no HTTP/HTTPS.</p>
+                    <p>Example: <code>google.com</code></p>
                     <input placeholder="google.com" class="form-control" id="redirurl" />
                     <br>
                     <button onClick="queryRedirect();" class="btn btn-info">Redirect!</button>
@@ -68,9 +68,22 @@
     <script>
         function queryRedirect() {
             var siteurl = document.getElementById("siteurl").value;
-            var redirurl = document.getElementById("redirurl").value;
-            window.location.href = "http://" + siteurl + "?" + redirurl;
-        }
+            var redirurlunedited = document.getElementById("redirurl").value;
+            if (redirurlunedited.indexOf('http://') !== -1) {
+                var redirurl = redirurlunedited.replace("http://", "");
+            } else if (redirurlunedited.indexOf('https://') !== -1) {
+                var redirurl = redirurlunedited.replace("https://", "");
+            } else {
+                var redirurl = redirurlunedited;
+            };
+            if (siteurl.indexOf('http://') !== -1) {
+                window.location.href = siteurl + "?" + redirurlunedited;
+            } else if (siteurl.indexOf('https://') !== -1) {
+                window.location.href = siteurl + "?" + redirurlunedited;
+            } else {
+                window.location.href = "http://" + siteurl + "?" + redirurlunedited;
+            };
+        };
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
