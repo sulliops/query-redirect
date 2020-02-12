@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Required meta tags -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Query Redirect</title>
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" onClick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;" style="cursor: pointer;">
+            Query Redirect
+        </a>
+    </div>
+    <section style="margin-bottom:-2.5rem;">
+        <div class="jumbotron jumbotron-fluid" style="height:100vh;">
+            <div class="container">
+                <h1 class="display-4">Query Redirect</h1>
+                <p class="lead" id="lead-text">Please wait to be redirected to <code id="redirURLcode"></code>. </p>
+                <hr class="my-4">
+                <p>You can cancel the redirection using the button below. </p>
+                <br>
+                <a class="btn btn-info" style="cursor: pointer; color: white;" onClick="window.location.href = 'http://' + window.location.hostname;" role="button">Cancel Redirect</a>
+            </div>
+        </div>
+    </section>
+    <footer class="py-4 bg-dark text-white-50" id="footer">
+        <div class="container text-left">
+            <small>&copy; 2020 Your Name</small>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <script>
+        var redirURLcode = document.getElementById("redirURLcode"); // variable for <code> block in paragraph
+        var query = window.location.search; // gets query from address bar
+        var target = query.replace("?", ""); // removes "?" from query
+        if (query.indexOf('?') !== -1) { // checks for query in address bar
+            redirURLcode.innerHTML = target; // sets <code> to site to be redirected to
+        } else { // if no query
+            var leadText = document.getElementById("lead-text"); // variable for the first paragraph
+            leadText.innerHTML = "Please wait to be redirected to the homepage. "; // sets paragraph text
+        };
+        setTimeout(function() { // sets time to redirect to 5 seconds
+            if (window.location.search.indexOf('?') !== -1) { // checks for query in address bar
+                if (window.location.search.indexOf('https://') !== -1) { // checks for https:// protocol in query
+                    var query = window.location.search; // gets query from address bar
+                    var target = query.replace("?", ""); // removes "?" from query
+                    window.location.href = target; // sends user to target
+                } else if (window.location.search.indexOf('http://') !== -1) { // checks for http:// protocol in query
+                    var query = window.location.search; // gets query from address bar
+                    var target = query.replace("?", ""); // removes "?" from query
+                    window.location.href = target; // sends user to target
+                } else { // if no protocol is declared
+                    var query = window.location.search; // gets query from address bar
+                    var target = query.replace("?", ""); // removes "?" from query
+                    window.location.href = "http://" + target; // sends user to http://[target] in case target does not support SSL
+                }
+            } else { // if no query
+                var currentURL = window.location.hostname
+                window.location.href = "http://" + currentURL // sends user back to homepage
+            };
+        }, 5000);
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
